@@ -1,14 +1,36 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import login from '../Lottie/register-animation.json'
 import Lottie from 'lottie-react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../Provider/AuthProvider';
+import toast from 'react-hot-toast';
 
 const Login = () => {
+    const {userSignIn,setUser} = useContext(AuthContext)
+
+const handelLogin = e =>{
+    e.preventDefault()
+  const form = e.target
+  const email = form.email.value
+  const password = form.password.value
+
+  userSignIn(email, password)
+  .then((result)=>{
+    toast.success('login successful')
+    const user = result.user
+    setUser(user)
+  })
+  .catch((error) => {
+    toast.error('failed to login')
+  });
+  
+}
+
     return (
         <div className='my-14 flex justify-between w-[80%] mx-auto items-center'>
              <div className="mx-auto w-full max-w-md space-y-4 rounded-lg border bg-white p-10 shadow-lg dark:border-zinc-700 dark:bg-zinc-900">
             <h1 className="text-3xl text-center font-semibold">Login</h1>
-            <form action="#" className="space-y-6">
+            <form onSubmit={handelLogin} action="#" className="space-y-6">
                 <div className="space-y-2 text-sm text-zinc-700 dark:text-zinc-300">
                     <label htmlFor="username_2" className="block font-medium">
                   Email

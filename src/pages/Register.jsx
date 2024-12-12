@@ -1,9 +1,40 @@
 import Lottie from "lottie-react";
-import React from "react";
+import React, { useContext } from "react";
 import register from "../Lottie/login-animation.json";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
+import toast from "react-hot-toast";
 
 const Register = () => {
+const {setUser,updateUserProfile,userSignUp} = useContext(AuthContext)
+const navigate = useNavigate()
+
+const handelRegister = e =>{
+    e.preventDefault()
+    const form = e.target
+    const name = form.name.value
+    const email = form.email.value
+    const password = form.password.value
+    const photo = form.photo.value
+
+    const newUser = {name,email,password,photo}
+    console.log('user creat',newUser)
+
+    userSignUp(email, password)
+    .then((result)=>{
+        toast.success('Successfully registered')
+        const user = result.user
+        setUser(user)
+        updateUserProfile({displayName:name, photoURL:photo})
+        console.log('user created at firebase',user)
+    })
+    .catch((error)=>{
+        toast.error('Failed to register')
+    })
+  
+}
+
+
   return (
     <div className="flex justify-around gap-16 w-[70%] mx-auto my-12">
       <div className="w-full max-w-md rounded-lg bg-white px-10 pb-10 pt-8 shadow-md dark:bg-zinc-900">
@@ -15,7 +46,7 @@ const Register = () => {
             Please fill in the form to create an account.
           </p>
         </div>
-        <form className="w-full space-y-6">
+        <form onSubmit={handelRegister} className="w-full space-y-6">
           <div className="space-y-2 text-sm text-zinc-700 dark:text-zinc-400">
             <label className="block font-medium" htmlFor="name">
               Name
