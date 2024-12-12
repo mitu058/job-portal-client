@@ -52,7 +52,7 @@ const Navbar = () => {
   </div>
   <div className="navbar-end space-x-4">
     <Link to='/login'><button className='btn btn-primary'>Login</button></Link> 
-    <Link><button className='btn btn-primary'>Register</button></Link>
+    <Link to='/register'><button className='btn btn-primary'>Register</button></Link>
   </div>
 </div>
     

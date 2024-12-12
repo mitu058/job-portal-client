@@ -1,21 +1,25 @@
 import React from 'react';
+import login from '../Lottie/register-animation.json'
+import Lottie from 'lottie-react';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     return (
-        <div>
+        <div className='my-14 flex justify-between w-[80%] mx-auto items-center'>
              <div className="mx-auto w-full max-w-md space-y-4 rounded-lg border bg-white p-10 shadow-lg dark:border-zinc-700 dark:bg-zinc-900">
-            <h1 className="text-3xl font-semibold">Sign In</h1>
+            <h1 className="text-3xl text-center font-semibold">Login</h1>
             <form action="#" className="space-y-6">
                 <div className="space-y-2 text-sm text-zinc-700 dark:text-zinc-300">
                     <label htmlFor="username_2" className="block font-medium">
-                        Username
+                  Email
                     </label>
                     <input
                         className="flex h-10 w-full rounded-md border px-3 py-2 text-sm focus:ring-1 focus-visible:outline-none dark:border-zinc-700"
-                        id="username_2"
-                        placeholder="Enter username"
-                        name="username"
-                        type="text"
+                       
+                        placeholder="Enter email"
+                        name="email"
+                        type="email"
+                        required
                     />
                 </div>
                 <div className="space-y-2 text-sm text-zinc-700 dark:text-zinc-300">
@@ -28,6 +32,7 @@ const Login = () => {
                         placeholder="Enter password"
                         name="password"
                         type="password"
+                        required
                     />
                     <div className="flex justify-end text-xs">
                         <a href="#" className="text-zinc-700 hover:underline dark:text-zinc-300">
@@ -35,13 +40,13 @@ const Login = () => {
                         </a>
                     </div>
                 </div>
-                <button className="w- rounded-md bg-sky-500 px-4 py-2 text-white transition-colors hover:bg-sky-600 dark:bg-sky-700">Submit</button>
+                <button className="w-full rounded-md bg-sky-500 px-4 py-2 text-white transition-colors hover:bg-sky-600 dark:bg-sky-700">Submit</button>
             </form>
             <p className="text-center text-sm text-zinc-700 dark:text-zinc-300">
                 Don&apos;t have an account?
-                <a href="#" className="font-semibold underline">
-                    Signup
-                </a>
+                <Link to='/register' className="font-semibold underline">
+                    Register
+                </Link>
             </p>
             <div className="my-8 flex items-center">
                 <hr className="flex-1 border-gray-400" />
@@ -62,6 +67,9 @@ const Login = () => {
                     </svg>
                 </button>
             </div>
+        </div>
+        <div>
+            <Lottie animationData={login} loop={true} className='w-96'></Lottie>
         </div>
         </div>
     );
