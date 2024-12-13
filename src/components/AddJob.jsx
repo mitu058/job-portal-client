@@ -32,7 +32,7 @@ fetch('http://localhost:5000/jobs',{
 
 
   return (
-    <div className="my-10">
+    <div className="">
       <div className="flex items-center justify-center ">
         <div className="w-full max-w-3xl p-8 bg-white rounded-lg shadow-lg">
           <h1 className="text-2xl font-bold text-center mb-8">
@@ -44,17 +44,12 @@ fetch('http://localhost:5000/jobs',{
                 <label className="block text-sm font-medium text-gray-700">
                   Job Title
                 </label>
-                <select
+                <input
+                  type="text"
                   name="jobTitle"
                   className="w-full px-3 py-2 mt-1 border rounded-md focus:ring focus:ring-blue-300 focus:outline-none"
-                >
-                  <option>Software Engineer</option>
-                  <option>Marketing Specialist</option>
-                  <option>Finance Manager</option>
-                  <option>Project Manager</option>
-                  <option>UI/UX Designer</option>
-                  <option>Teaching Assistant</option>
-                </select>
+                  placeholder="job title"
+                />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
@@ -100,17 +95,12 @@ fetch('http://localhost:5000/jobs',{
                 <label className="block text-sm font-medium text-gray-700">
                   Category
                 </label>
-                <select
+                <input
+                  type="text"
                   name="category"
                   className="w-full px-3 py-2 mt-1 border rounded-md focus:ring focus:ring-blue-300 focus:outline-none"
-                >
-                  <option>Engineering</option>
-                  <option>Development</option>
-                  <option>Marketing</option>
-                  <option>Teaching</option>
-                  <option>Design</option>
-                  <option>Management</option>
-                </select>
+                  placeholder="category"
+                />
               </div>
               <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700">
